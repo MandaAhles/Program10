@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class EightQueens extends JFrame{
+	public static void main(String[] args){
+		new EightQueens();
+	}
 /*JFrame
  * 2 JPanels: board (setLayout(new GridLayout(8,8), 
  * and buttons(setLayout(new GridLayout(2, 1)
@@ -41,7 +44,7 @@ public class EightQueens extends JFrame{
 		setLayout(new BorderLayout(1,1));//not sure what the border size should be.
 		setTitle("Eight Queens Puzzle");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//createContents();
+		createContents();
 		setVisible(true);
 	}
 	
@@ -76,6 +79,15 @@ public class EightQueens extends JFrame{
 		
 		//add any listeners needed???
 		//add it all together within JFrame
+		//add(board);
+		add(control);
+		add(controlLabel);
+		
+		
+		//add(controlLabel);
+		//add(chooseVisibilityLabel);
+		//add(group);
+		
 		
 		/*  put it all together. 
 		 * listener for startOver button, board buttons, radio buttons?
