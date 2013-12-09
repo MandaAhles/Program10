@@ -1,5 +1,13 @@
-import javax.swing.*;
+/**
+ * Comp Sci 251
+ * sc. 805
+ * created by Amanda McTavish
+ * updated 12/8
+ * 
+ * notes: board is null.
+ */
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -18,7 +26,8 @@ public class EightQueens extends JFrame{
 	private int nLosses=0;
 	//any additional swing components must be here so can be used by rest of prog.
 	JPanel control = new JPanel(new GridLayout(1,1));
-	//JPanel board= new JPanel(new GridLayout(1, 1)); 
+	
+	JPanel gameBoard= new JPanel(new GridLayout(1, 1)); 
 	//^ not sure need this with Square class board, new name in any case.
 	JButton startOver;
 	JRadioButton alwaysShow;
@@ -52,8 +61,7 @@ public class EightQueens extends JFrame{
 		//instantiate stuff
 		JLabel controlLabel= new JLabel("Controls");
 		JLabel chooseVisibilityLabel= new JLabel("Show Unsafe Spaces: ");
-		//JLabel alwaysShowLabel= new JLabel("Always");//need this? with radio button?
-		//JLabel whenPressedLabel= new JLabel ("When Mouse Pressed");//need this???
+		
 		JLabel lResultLabel= new JLabel("Last Result: ");
 		JLabel winsLabel= new JLabel("Wins: ");
 		JLabel lossLabel= new JLabel("Losses: ");
@@ -79,7 +87,7 @@ public class EightQueens extends JFrame{
 		
 		//add any listeners needed???
 		//add it all together within JFrame
-		//add(board);
+		add(gameBoard);
 		add(control);
 		add(controlLabel);
 		
