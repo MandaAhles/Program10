@@ -8,6 +8,7 @@
  */
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -25,9 +26,9 @@ public class EightQueens extends JFrame{
 	private int nWins=0;
 	private int nLosses=0;
 	//any additional swing components must be here so can be used by rest of prog.
-	JPanel control = new JPanel(new GridLayout(1,1));
+	JPanel control = new JPanel(new GridLayout(11,1));
 	
-	JPanel gameBoard= new JPanel(new GridLayout(1, 1)); 
+	JPanel gameBoard= new JPanel(new GridLayout(8, 8)); 
 	//^ not sure need this with Square class board, new name in any case.
 	JButton startOver;
 	JRadioButton alwaysShow;
@@ -45,11 +46,20 @@ public class EightQueens extends JFrame{
 	 * 
 	 * buttons: for board (in Square class extends JButton)
 	 * 
+	 * This goes somewhere for initializing board:
+	 * 
+	 * for (int i = 0; i < sideLength; i++) {
+				board[i] = new Square[sideLength]; 
+					for (int j = 0; j < sideLength; j++){
+						board[i][j] = new Square();
+					}
+			}
+	 * 
 	 */
 	
 	
 	public EightQueens(){
-		setSize(1200, 440);
+		setSize(700, 550);//these are the numbers from lectures' example.
 		setLayout(new BorderLayout(1,1));//not sure what the border size should be.
 		setTitle("Eight Queens Puzzle");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,6 +83,8 @@ public class EightQueens extends JFrame{
 		group.add(alwaysShow);
 		group.add(showMousePress);
 		
+		
+		
 		//add listeners for Radio Buttons???
 		//alwaysShow.addActionListener((ActionListener) this);
 		//showMousePress.addActionListener((ActionListener) this);
@@ -86,10 +98,26 @@ public class EightQueens extends JFrame{
 		losses= new JTextField(0);
 		
 		//add any listeners needed???
+		
+		//add components to panels:
+		//fill gameBoard panel with squares= board
+				//board= new Square[8][8];
+		
+		//add copmonents to controls
+		/*control.add(controlLabel);
+		 * control.add(chooseVisibilityLabel);
+		 * control.add(group);
+		 * control.add(startOver);
+		 * control.add(lResultLabel, LEFT);
+		 */
+		
 		//add it all together within JFrame
-		add(gameBoard);
+		add(gameBoard, BorderLayout.CENTER);
+		add(control, BorderLayout.EAST);
+		/*add(gameBoard);
 		add(control);
-		add(controlLabel);
+		add(controlLabel);*/
+		
 		
 		
 		//add(controlLabel);
@@ -118,6 +146,7 @@ public class EightQueens extends JFrame{
 	private class Square extends JButton {
 		public Square() {
 			super.setContentAreaFilled(false); 
+			
 			// add Listener here
 		}
 		@Override
