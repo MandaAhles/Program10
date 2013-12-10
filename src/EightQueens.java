@@ -21,7 +21,7 @@ public class EightQueens extends JFrame{
  * and buttons(setLayout(new GridLayout(2, 1)
  * 
  */
-	private Square board;
+	private Square[][] board;
 	private int queenCount=0;
 	private int nWins=0;
 	private int nLosses=0;
@@ -37,14 +37,7 @@ public class EightQueens extends JFrame{
 	JTextField lastResult;
 	JTextField wins;
 	JTextField losses;
-	/*
-	 * other components needed:
-	 * 
-	 * Radio Buttons: (Always show unsafe spaces) and (when mouse pressed)
-	 * 
-	 * JTextField: (Last Result)-invisible; (wins); (losses);
-	 * 
-	 * buttons: for board (in Square class extends JButton)
+	/* * buttons: for board (in Square class extends JButton)
 	 * 
 	 * This goes somewhere for initializing board:
 	 * 
@@ -97,20 +90,27 @@ public class EightQueens extends JFrame{
 		
 		//add components to panels:
 		//fill gameBoard panel with squares= board
-				//board= new Square[8][8];
+		board= new Square[8][8];
+		for (int i = 0; i < 8; i++) {
+			board[i] = new Square[8]; 
+				for (int j = 0; j < 8; j++){
+					board[i][j] = new Square();
+					gameBoard.add(board[i][j]);				}
+		}
+		
 		
 		//add components to controls
 		control.add(controlLabel);
-		 control.add(chooseVisibilityLabel);
-		 control.add(alwaysShow);
-		 control.add(showMousePress);
-		 control.add(startOver);
-		 control.add(lResultLabel, LEFT_ALIGNMENT);
-		 control.add(lastResult);
-		 control.add(winsLabel);
-		 control.add(wins);
-		 control.add(lossLabel);
-		 control.add(losses);
+		control.add(chooseVisibilityLabel);
+		control.add(alwaysShow);
+		control.add(showMousePress);
+		control.add(startOver);
+		control.add(lResultLabel, LEFT_ALIGNMENT);
+		control.add(lastResult);
+		control.add(winsLabel);
+		control.add(wins);
+		control.add(lossLabel);
+		control.add(losses);
 		
 		
 		//add it all together within JFrame
