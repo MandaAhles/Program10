@@ -108,12 +108,9 @@ public class EightQueens extends JFrame{
 		//add it all together within JFrame
 		add(gameBoard, BorderLayout.CENTER);
 		add(control, BorderLayout.EAST);
-		
-		/*  put it all together. 
-		 * listener for startOver button, board buttons, radio buttons?
-		 */
-		
+
 	}//end createContents
+	
 	private void markSquares(){
 		//search for squares in "queen state" (state=2);
 		for (int i = 0; i < 8; i++) {
