@@ -42,7 +42,14 @@ public class Notes {
  * Wins/Losses lines are in a flow layout, centered.
  * 
  * 
- * 
+ * useful code:
+ * for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++){
+				if(board[i][j].getState()==0){
+					
+				}
+			}
+		}
  * 
  */
 }

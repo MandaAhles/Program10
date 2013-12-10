@@ -79,6 +79,7 @@ public class EightQueens extends JFrame{
 		
 		//add any listeners needed???
 		startOver.addActionListener(new Listener());
+		
 		//add components to panels:
 		//fill gameBoard panel with squares= board
 		board= new Square[8][8];
@@ -86,7 +87,6 @@ public class EightQueens extends JFrame{
 			board[i] = new Square[8]; 
 				for (int j = 0; j < 8; j++){
 					board[i][j] = new Square();
-					//board[i][j].addActionListener(new Listener());
 					gameBoard.add(board[i][j]);				
 				}
 		}
@@ -116,6 +116,13 @@ public class EightQueens extends JFrame{
 	}//end createContents
 	private void markSquares(){
 		//search for squares in "queen state" (state=2);
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++){
+				if(board[i][j].getState()==2){
+					//calls markSquaresForOneQueen();
+				}
+			}
+		}
 		//calls markSquaresForOneQueen()
 	}
 	private void markSquaresForOneQueen(){
@@ -146,10 +153,12 @@ public class EightQueens extends JFrame{
 				}
 				if(giveUp==true){
 					nLosses++;
+					losses.setText(""+ nLosses);
 					lastResult.setText("Loss");
 				}
 				else{
 					nWins++;
+					wins.setText(""+nWins);
 					lastResult.setText("Win!");
 				}
 			}
@@ -158,8 +167,14 @@ public class EightQueens extends JFrame{
 			//later, if doing ec, could add else if's for radio buttons.
 			else{//from square:
 				//which square: e.getSource()
-				
-				
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++){
+						if(board[i][j]==e.getSource()){//mark it as Queen
+							board[i][j].setState(2);
+						}
+					}
+				}
+				markSquares();
 			}
 				
 			
@@ -176,6 +191,9 @@ public class EightQueens extends JFrame{
 		}
 		public int getState(){
 			return state;
+		}
+		public void setState(int state){
+			this.state=state;
 		}
 		public void markUnsafe(){
 			//set all background colors of state=1 to RED
