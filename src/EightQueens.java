@@ -108,7 +108,12 @@ public class EightQueens extends JFrame{
 		 * control.add(chooseVisibilityLabel);
 		 * control.add(group);
 		 * control.add(startOver);
-		 * control.add(lResultLabel, LEFT);
+		 * control.add(lResultLabel, LEFT_ALIGNMENT);
+		 * control.add(lastResult);
+		 * control.add(winsLabel);
+		 * control.add(wins);
+		 * control.add(lossLabel);
+		 * control.add(losses);
 		 */
 		
 		//add it all together within JFrame
