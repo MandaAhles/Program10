@@ -83,17 +83,13 @@ public class EightQueens extends JFrame{
 		group.add(alwaysShow);
 		group.add(showMousePress);
 		
-		
-		
 		//add listeners for Radio Buttons???
 		//alwaysShow.addActionListener((ActionListener) this);
 		//showMousePress.addActionListener((ActionListener) this);
 		
 		startOver=new JButton("Start Over");
-		
 		lastResult= new JTextField(0);
 		lastResult.setVisible(false);//don't want to see the actual box, just result
-		
 		wins= new JTextField(0);
 		losses= new JTextField(0);
 		
@@ -103,32 +99,23 @@ public class EightQueens extends JFrame{
 		//fill gameBoard panel with squares= board
 				//board= new Square[8][8];
 		
-		//add copmonents to controls
-		/*control.add(controlLabel);
-		 * control.add(chooseVisibilityLabel);
-		 * control.add(group);
-		 * control.add(startOver);
-		 * control.add(lResultLabel, LEFT_ALIGNMENT);
-		 * control.add(lastResult);
-		 * control.add(winsLabel);
-		 * control.add(wins);
-		 * control.add(lossLabel);
-		 * control.add(losses);
-		 */
+		//add components to controls
+		control.add(controlLabel);
+		 control.add(chooseVisibilityLabel);
+		 control.add(alwaysShow);
+		 control.add(showMousePress);
+		 control.add(startOver);
+		 control.add(lResultLabel, LEFT_ALIGNMENT);
+		 control.add(lastResult);
+		 control.add(winsLabel);
+		 control.add(wins);
+		 control.add(lossLabel);
+		 control.add(losses);
+		
 		
 		//add it all together within JFrame
 		add(gameBoard, BorderLayout.CENTER);
 		add(control, BorderLayout.EAST);
-		/*add(gameBoard);
-		add(control);
-		add(controlLabel);*/
-		
-		
-		
-		//add(controlLabel);
-		//add(chooseVisibilityLabel);
-		//add(group);
-		
 		
 		/*  put it all together. 
 		 * listener for startOver button, board buttons, radio buttons?
@@ -151,7 +138,6 @@ public class EightQueens extends JFrame{
 	private class Square extends JButton {
 		public Square() {
 			super.setContentAreaFilled(false); 
-			
 			// add Listener here
 		}
 		@Override
@@ -161,4 +147,4 @@ public class EightQueens extends JFrame{
 			super.paintComponent(g);
 		} 
 	}//ends Square class
-}
+}//ends EightQueens class

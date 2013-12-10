@@ -27,5 +27,22 @@ public class Notes {
  * 
  * maybe this will work. How do I save this to gitHub initially?
  * 
+ * 
+ * from lecture 12/8: 
+ * 
+ * By analyzing the the window at different sizes, can read the layouts chosen:
+ * 
+ * JFrame is boarderLayout: gameBoard is Center, controls are East;
+ * gameBoard is gridLayout(8, 8); "it's made up of 8x8 grid pattern that
+ * are always the same size and shape;
+ * control panel (would be a good one for: flowLayout): gridLayout: one column, many rows,
+ * when sizes are adjusted, they mostly stay the same size.
+ * startOver button: suggests that it is within a panel, and has a flow layout (doens't go to edges)
+ * center alignment of labels is default, and the lastResult label is specified as left Alignment
+ * Wins/Losses lines are in a flow layout, centered.
+ * 
+ * 
+ * 
+ * 
  */
 }
