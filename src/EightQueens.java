@@ -9,7 +9,7 @@
 
 import javax.swing.*;
 
-import TicTacToe.Listener;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -81,7 +81,7 @@ public class EightQueens extends JFrame{
 		losses= new JTextField(0);
 		
 		//add any listeners needed???
-		
+		startOver.addActionListener(new Listener());
 		//add components to panels:
 		//fill gameBoard panel with squares= board
 		board= new Square[8][8];
@@ -89,7 +89,7 @@ public class EightQueens extends JFrame{
 			board[i] = new Square[8]; 
 				for (int j = 0; j < 8; j++){
 					board[i][j] = new Square();
-					board[i][j].addActionListener(new Listener());
+					//board[i][j].addActionListener(new Listener());
 					gameBoard.add(board[i][j]);				
 				}
 		}
@@ -116,6 +116,17 @@ public class EightQueens extends JFrame{
 		 * listener for startOver button, board buttons, radio buttons?
 		 */
 		
+	}//end createContents
+	private void markSquares(){
+		//search for squares in "queen state" (state=2);
+		//calls markSquaresForOneQueen()
+	}
+	private void markSquaresForOneQueen(){
+		//marks "unsafe" squares there (6 loops) by calling Square.markUnsafe()
+		//complex 6-loop here:
+		//state of square clicked: state=2 (2 loops)
+		//state of squares diag to NE, SE, SW, and NW state=1 (4 loops)
+
 	}
 	private class Listener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
@@ -123,18 +134,48 @@ public class EightQueens extends JFrame{
 			 * if get.Source is from startOver button, clear/refresh screen,
 			 * inc win of loss (how will know? all buttons are "unsafe (1)"
 			 * or the queen (2)?)
+			 * if all buttons are "unsafe" or "queen", update wins++
+			 * else update losses++ (gave up)
+			 * then:
+			 * clear board;
+			 * display "last result" in text field
 			 * 
 			 * else if (get.Source is from any button in the board: update board.)
 			 * (< easier said than done...) 
 			 * call markSquares and markSquaresForOneQueen methods?
 			 */
+			
 		}
 	}//ends listener class
 	private class Square extends JButton {
+		int state;//0 for safe, 1 for unsafe, 2 for queen.
 		public Square() {
 			super.setContentAreaFilled(false); 
 			// add Listener here
+			addActionListener(new Listener());
+			state=0;//starts out as 0 for Safe.
+			
 		}
+		public int getState(){
+			return state;
+		}
+		public void markUnsafe(){
+			//set all background colors of state=1 to RED
+				
+		}
+		public void clear(){
+			//reset all squares to state=0;
+			for (int i = 0; i < 8; i++) {
+				//board[i] = new Square[8]; 
+					for (int j = 0; j < 8; j++){
+						//board[i][j] = new Square();
+						board[i][j].state=0;
+						//state=0;
+					}
+			}
+			//reset background to null
+		}
+		
 		@Override
 		protected void paintComponent(Graphics g) {
 			g.setColor(getBackground());
