@@ -8,9 +8,6 @@
  */
 
 import javax.swing.*;
-
-
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -130,27 +127,48 @@ public class EightQueens extends JFrame{
 	}
 	private class Listener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
+			boolean giveUp=false;
 			/*
-			 * if get.Source is from startOver button, clear/refresh screen,
-			 * inc win of loss (how will know? all buttons are "unsafe (1)"
-			 * or the queen (2)?)
-			 * if all buttons are "unsafe" or "queen", update wins++
-			 * else update losses++ (gave up)
-			 * then:
-			 * clear board;
-			 * display "last result" in text field
-			 * 
 			 * else if (get.Source is from any button in the board: update board.)
 			 * (< easier said than done...) 
 			 * call markSquares and markSquaresForOneQueen methods?
 			 */
+			if (e.getSource()==startOver){
+				
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++){
+						if(board[i][j].getState()==0){
+							//at least one square is open still, so giving up.
+							giveUp=true;
+						}
+						board[i][j].clear();
+					}
+				}
+				if(giveUp==true){
+					nLosses++;
+					lastResult.setText("Loss");
+				}
+				else{
+					nWins++;
+					lastResult.setText("Win!");
+				}
+			}
+			//else: only else? not else if? too hard to be detailed
+			//about which square on the board it came from???
+			//later, if doing ec, could add else if's for radio buttons.
+			else{//from square:
+				//which square: e.getSource()
+				
+				
+			}
+				
 			
 		}
 	}//ends listener class
 	private class Square extends JButton {
 		int state;//0 for safe, 1 for unsafe, 2 for queen.
 		public Square() {
-			super.setContentAreaFilled(false); 
+			super.setContentAreaFilled(false);
 			// add Listener here
 			addActionListener(new Listener());
 			state=0;//starts out as 0 for Safe.
@@ -161,17 +179,25 @@ public class EightQueens extends JFrame{
 		}
 		public void markUnsafe(){
 			//set all background colors of state=1 to RED
+			for (int i = 0; i < 8; i++) {
+				for (int j = 0; j < 8; j++){
+					if (board[i][j].getState()==1){
+						board[i][j].setBackground(Color.RED);
+						//state=0;
+					}
+				}
+			}
+			
 				
 		}
 		public void clear(){
 			//reset all squares to state=0;
 			for (int i = 0; i < 8; i++) {
-				//board[i] = new Square[8]; 
-					for (int j = 0; j < 8; j++){
-						//board[i][j] = new Square();
-						board[i][j].state=0;
+				for (int j = 0; j < 8; j++){
+					board[i][j].state=0;
+					board[i][j].setBackground(null);
 						//state=0;
-					}
+				}
 			}
 			//reset background to null
 		}
