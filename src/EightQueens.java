@@ -154,11 +154,17 @@ public class EightQueens extends JFrame{
 				if(giveUp==true){
 					nLosses++;
 					losses.setText(""+ nLosses);
+					lastResult.setVisible(true);
+					lastResult.setBackground(null);
+					lastResult.setBorder(null);
 					lastResult.setText("Loss");
 				}
 				else{
 					nWins++;
 					wins.setText(""+nWins);
+					lastResult.setVisible(true);
+					lastResult.setBackground(null);
+					lastResult.setBorder(null);
 					lastResult.setText("Win!");
 				}
 			}
