@@ -9,24 +9,31 @@
 
 import javax.swing.*;
 
+import TicTacToe.Listener;
+
 import java.awt.*;
 import java.awt.event.*;
 
 public class EightQueens extends JFrame{
 	public static void main(String[] args){
-		new EightQueens();
+		
+			try {
+			// Set cross-platform Java L&F (also called "Metal") 
+				UIManager.setLookAndFeel(
+						UIManager.getCrossPlatformLookAndFeelClassName());
+			}catch (Exception e) {
+				System.out.println("Cross Platform transformation couldn't take place.");
+				return;
+			}
+			new EightQueens();
 	}
-/*JFrame
- * 2 JPanels: board (setLayout(new GridLayout(8,8), 
- * and buttons(setLayout(new GridLayout(2, 1)
- * 
- */
+
 	private Square[][] board;
 	private int queenCount=0;
 	private int nWins=0;
 	private int nLosses=0;
 	//any additional swing components must be here so can be used by rest of prog.
-	JPanel control = new JPanel(new GridLayout(11,1));
+	JPanel control = new JPanel(new GridLayout(11, 3));
 	
 	JPanel gameBoard= new JPanel(new GridLayout(8, 8)); 
 	//^ not sure need this with Square class board, new name in any case.
@@ -37,23 +44,10 @@ public class EightQueens extends JFrame{
 	JTextField lastResult;
 	JTextField wins;
 	JTextField losses;
-	/* * buttons: for board (in Square class extends JButton)
-	 * 
-	 * This goes somewhere for initializing board:
-	 * 
-	 * for (int i = 0; i < sideLength; i++) {
-				board[i] = new Square[sideLength]; 
-					for (int j = 0; j < sideLength; j++){
-						board[i][j] = new Square();
-					}
-			}
-	 * 
-	 */
-	
-	
+
 	public EightQueens(){
 		setSize(700, 550);//these are the numbers from lectures' example.
-		setLayout(new BorderLayout(1,1));//not sure what the border size should be.
+		setLayout(new BorderLayout(3,1));//not sure what the border size should be.
 		setTitle("Eight Queens Puzzle");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		createContents();
@@ -95,9 +89,10 @@ public class EightQueens extends JFrame{
 			board[i] = new Square[8]; 
 				for (int j = 0; j < 8; j++){
 					board[i][j] = new Square();
-					gameBoard.add(board[i][j]);				}
+					board[i][j].addActionListener(new Listener());
+					gameBoard.add(board[i][j]);				
+				}
 		}
-		
 		
 		//add components to controls
 		control.add(controlLabel);
