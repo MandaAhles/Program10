@@ -122,10 +122,43 @@ public class EightQueens extends JFrame{
 		}
 		//calls markSquaresForOneQueen()
 	}
-	private void markSquaresForOneQueen(){
+	private void markSquaresForOneQueen(int qRow, int qCol){
 		//marks "unsafe" squares there (6 loops) by calling Square.markUnsafe()
 		//complex 6-loop here:
 		//state of square clicked: state=2 (2 loops)
+		for(int i=0; i<8; i++){//vertical and horizontal 
+			for(int j=0; j<8; j++){
+				if(i==qRow){
+					board[i][j].setState(1);
+				}
+				if(j==qCol){
+					board[i][j].setState(1);
+				}
+			}
+		}
+		//NW and SE diagonal
+		for (int i=0; i<8; i++){
+			for(int j=0; j<8; j++){
+				if (!(i==qRow && j==qCol)){//not the queen square
+					if ((i+j)==(qRow+qCol)){
+						board[i][j].setState(1);
+					}
+				}
+			}
+		}
+		//NE, i and j are <qRow and qCol
+		for(int i=qRow, j=qCol, k=1; i>0; i--, j--, k++){
+			if((i==(qRow-k)) && (j==(qCol-k))){
+				board[i][j].setState(1);
+			}
+		}
+		//SW, i and j are >qRow and qCol
+		for(int i=qRow, j=qCol, k=1; i>8; i++, j++, k++){
+			if((i==(qRow+k)) && (j==(qCol+k))){
+				board[i][j].setState(1);
+			}
+		}
+		
 		//state of squares diag to NE, SE, SW, and NW state=1 (4 loops)
 
 	}
