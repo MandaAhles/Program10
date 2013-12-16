@@ -7,9 +7,12 @@
  * notes: not changing the background for NE and SW squares; still need to add in icon for Queen somehow.
  */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 public class EightQueens extends JFrame{
 	public static void main(String[] args){
@@ -116,6 +119,14 @@ public class EightQueens extends JFrame{
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++){
 				if(board[i][j].getState()==2){
+					try{
+						Image img=ImageIO.read(getClass().getResource("queen-icon.jpg"));
+						board[i][j].setIcon(new ImageIcon(img));
+					}catch(IOException e){
+						System.out.println("File not found");
+						return;
+					}
+					
 					markSquaresForOneQueen(i, j);//i=qRow, j=qCol
 				}
 			}
@@ -128,11 +139,11 @@ public class EightQueens extends JFrame{
 		//state of square clicked: state=2 (2 loops)
 		for(int i=0; i<8; i++){//vertical and horizontal 
 			for(int j=0; j<8; j++){
-				if(i==qRow){
+				if(i==qRow && j!=qCol){
 					board[i][j].setState(1);
 					board[i][j].markUnsafe();
 				}
-				if(j==qCol){
+				if(j==qCol && i!=qRow){
 					board[i][j].setState(1);
 					board[i][j].markUnsafe();
 				}
