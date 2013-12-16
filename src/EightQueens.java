@@ -5,9 +5,9 @@
  * updated 12/15
  * 
  * notes:
- * need to clear of icons with start over.
+ * 
  * not sure the win/loss is working right, 
- * might be because the NE/SW squares aren't working.
+ * 
  */
 
 import javax.imageio.ImageIO;
@@ -272,7 +272,6 @@ public class EightQueens extends JFrame{
 					board[i][j].state=0;
 					board[i][j].setBackground(null);
 					board[i][j].setIcon(null);
-					
 				}
 			}
 			
