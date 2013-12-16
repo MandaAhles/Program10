@@ -4,7 +4,7 @@
  * created by Amanda McTavish
  * updated 12/8
  * 
- * notes: board is null.
+ * notes: not changing the background; still need to add in icon for Queen somehow.
  */
 
 import javax.swing.*;
