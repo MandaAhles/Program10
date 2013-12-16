@@ -130,9 +130,11 @@ public class EightQueens extends JFrame{
 			for(int j=0; j<8; j++){
 				if(i==qRow){
 					board[i][j].setState(1);
+					board[i][j].markUnsafe();
 				}
 				if(j==qCol){
 					board[i][j].setState(1);
+					board[i][j].markUnsafe();
 				}
 			}
 		}
@@ -142,6 +144,7 @@ public class EightQueens extends JFrame{
 				if (!(i==qRow && j==qCol)){//not the queen square
 					if ((i+j)==(qRow+qCol)){
 						board[i][j].setState(1);
+						board[i][j].markUnsafe();
 					}
 				}
 			}
@@ -150,12 +153,14 @@ public class EightQueens extends JFrame{
 		for(int i=qRow, j=qCol, k=1; i>0; i--, j--, k++){
 			if((i==(qRow-k)) && (j==(qCol-k))){
 				board[i][j].setState(1);
+				board[i][j].markUnsafe();
 			}
 		}
 		//SW, i and j are >qRow and qCol
 		for(int i=qRow, j=qCol, k=1; i>8; i++, j++, k++){
 			if((i==(qRow+k)) && (j==(qCol+k))){
 				board[i][j].setState(1);
+				board[i][j].markUnsafe();
 			}
 		}
 		
