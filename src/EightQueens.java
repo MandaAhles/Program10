@@ -2,9 +2,9 @@
  * Comp Sci 251
  * sc. 805
  * created by Amanda McTavish
- * updated 12/8
+ * updated 12/15
  * 
- * notes: not changing the background; still need to add in icon for Queen somehow.
+ * notes: not changing the background for NE and SW squares; still need to add in icon for Queen somehow.
  */
 
 import javax.swing.*;
@@ -116,7 +116,7 @@ public class EightQueens extends JFrame{
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++){
 				if(board[i][j].getState()==2){
-					//calls markSquaresForOneQueen();
+					markSquaresForOneQueen(i, j);//i=qRow, j=qCol
 				}
 			}
 		}
