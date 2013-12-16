@@ -4,8 +4,9 @@
  * created by Amanda McTavish
  * updated 12/15
  * 
- * notes: not changing the background for NE and SW squares; need to clear icons with start over.
- * not sure the win/loss is working right.
+ * notes: not changing the background for NE and SW squares; 
+ * need to clear of icons with start over.
+ * not sure the win/loss is working right, might be because the NE/SW squares aren't working.
  */
 
 import javax.imageio.ImageIO;
@@ -162,38 +163,40 @@ public class EightQueens extends JFrame{
 			}
 		}
 		//NW, i and j are <qRow and qCol
-		//for(int i=qRow, j=qCol, k=1; i>0; i--, j--, k++){
-			//if((i==(qRow-k)) && (j==(qCol-k))){
-			//	board[i][j].setState(1);
-			//	board[i][j].markUnsafe();
-			//}
-		//}
-		for(int i=qRow, k=1; i>=0; i--){
-			for(int j=qCol; j>=0; j--){
-				if((i==(qRow-k)) && (j==(qCol-k))){
-					board[i][j].setState(1);
-					board[i][j].markUnsafe();
-					k++;
-				}
-			}	
+		for(int i=qRow, j=qCol, k=1; i>-1; i--, j--){
+			if((i==(qRow-k)) && (j==(qCol-k) && ((qRow-k)>=0) && ((qCol-k)>=0))){
+				board[i][j].setState(1);
+				board[i][j].markUnsafe();
+				k++;
+			}
 		}
+		//for(int i=qRow, k=1; i>=0; i--){
+			//for(int j=qCol; j>=0; j--){
+				//if((i==(qRow-k)) && (j==(qCol-k))){
+				//	board[i][j].setState(1);
+				//	board[i][j].markUnsafe();
+				//	k++;
+				//}
+			//}	
+		//}
 		//SE, i and j are >qRow and qCol
-		//for(int i=qRow, j=qCol, k=1; i>8; i++, j++, k++){
-		//	if((i==(qRow+k)) && (j==(qCol+k))){
-			//	board[i][j].setState(1);
-				//board[i][j].markUnsafe();
-			//}
-		//}
-		for(int i=qRow, k=1; i>=0; i--){//rawr!!!
-			
-			for(int j=qCol; j>=0; j--){
-				if((i==(qRow-k)) && (j==(qCol-k))){
-					board[i][j].setState(1);
-					board[i][j].markUnsafe();
-					k++;
-				}
-			}	
+		for(int i=qRow, j=qCol, k=1; i<8; i++, j++){
+			if((i==(qRow+k)) && (j==(qCol+k) && ((qRow+k)<8) && ((qCol+k)<8))){
+				board[i][j].setState(1);
+				board[i][j].markUnsafe();
+				k++;
+			}
 		}
+		//for(int i=qRow, k=1; i>=0; i--){//rawr!!!
+			
+			//for(int j=qCol; j>=0; j--){
+				//if((i==(qRow-k)) && (j==(qCol-k))){
+				//	board[i][j].setState(1);
+				//	board[i][j].markUnsafe();
+				//	k++;
+			//	}
+			//}	
+	//	}
 		
 		//state of squares diag to NE, SE, SW, and NW state=1 (4 loops)
 
@@ -215,6 +218,7 @@ public class EightQueens extends JFrame{
 							giveUp=true;
 						}
 						board[i][j].clear();
+						validate();
 					}
 				}
 				if(giveUp==true){
