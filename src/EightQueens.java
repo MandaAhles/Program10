@@ -4,9 +4,10 @@
  * created by Amanda McTavish
  * updated 12/15
  * 
- * notes: not changing the background for NE and SW squares; 
+ * notes:
  * need to clear of icons with start over.
- * not sure the win/loss is working right, might be because the NE/SW squares aren't working.
+ * not sure the win/loss is working right, 
+ * might be because the NE/SW squares aren't working.
  */
 
 import javax.imageio.ImageIO;
@@ -170,15 +171,7 @@ public class EightQueens extends JFrame{
 				k++;
 			}
 		}
-		//for(int i=qRow, k=1; i>=0; i--){
-			//for(int j=qCol; j>=0; j--){
-				//if((i==(qRow-k)) && (j==(qCol-k))){
-				//	board[i][j].setState(1);
-				//	board[i][j].markUnsafe();
-				//	k++;
-				//}
-			//}	
-		//}
+		
 		//SE, i and j are >qRow and qCol
 		for(int i=qRow, j=qCol, k=1; i<8; i++, j++){
 			if((i==(qRow+k)) && (j==(qCol+k) && ((qRow+k)<8) && ((qCol+k)<8))){
@@ -187,16 +180,6 @@ public class EightQueens extends JFrame{
 				k++;
 			}
 		}
-		//for(int i=qRow, k=1; i>=0; i--){//rawr!!!
-			
-			//for(int j=qCol; j>=0; j--){
-				//if((i==(qRow-k)) && (j==(qCol-k))){
-				//	board[i][j].setState(1);
-				//	board[i][j].markUnsafe();
-				//	k++;
-			//	}
-			//}	
-	//	}
 		
 		//state of squares diag to NE, SE, SW, and NW state=1 (4 loops)
 
@@ -281,8 +264,6 @@ public class EightQueens extends JFrame{
 					}
 				}
 			}
-			
-				
 		}
 		public void clear(){
 			//reset all squares to state=0;
@@ -290,10 +271,11 @@ public class EightQueens extends JFrame{
 				for (int j = 0; j < 8; j++){
 					board[i][j].state=0;
 					board[i][j].setBackground(null);
-						//state=0;
+					board[i][j].setIcon(null);
+					
 				}
 			}
-			//reset background to null
+			
 		}
 		
 		@Override
