@@ -196,14 +196,21 @@ public class EightQueens extends JFrame{
 				
 				for (int i = 0; i < 8; i++) {
 					for (int j = 0; j < 8; j++){
-						if(board[i][j].getState()==0){
+						int qState=board[i][j].getState();
+						if(qState==0){
 							//at least one square is open still, so giving up.
 							giveUp=true;
 						}
+					}
+				}
+				for (int i = 0; i < 8; i++) {
+					for (int j = 0; j < 8; j++){
 						board[i][j].clear();
 						validate();
 					}
 				}
+				
+				
 				if(giveUp==true){
 					nLosses++;
 					losses.setText(""+ nLosses);
@@ -269,7 +276,7 @@ public class EightQueens extends JFrame{
 			//reset all squares to state=0;
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++){
-					board[i][j].state=0;
+					board[i][j].setState(0);
 					board[i][j].setBackground(null);
 					board[i][j].setIcon(null);
 				}
