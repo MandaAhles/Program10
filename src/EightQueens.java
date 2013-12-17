@@ -3,11 +3,6 @@
  * sc. 805
  * created by Amanda McTavish
  * updated 12/15
- * 
- * notes:
- * 
- * not sure the win/loss is working right, 
- * 
  */
 
 import javax.imageio.ImageIO;
@@ -49,8 +44,8 @@ public class EightQueens extends JFrame{
 	JTextField losses;
 
 	public EightQueens(){
-		setSize(700, 550);//these are the numbers from lectures' example.
-		setLayout(new BorderLayout(3,1));//not sure what the border size should be.
+		setSize(700, 550);
+		setLayout(new BorderLayout(3,1));
 		setTitle("Eight Queens Puzzle");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		createContents();
@@ -66,16 +61,11 @@ public class EightQueens extends JFrame{
 		JLabel winsLabel= new JLabel("Wins: ");
 		JLabel lossLabel= new JLabel("Losses: ");
 		
-		//radio buttons instantiated here, group together.
 		alwaysShow= new JRadioButton("Always", true);
 		showMousePress= new JRadioButton("When Mouse Pressed");
 		ButtonGroup group= new ButtonGroup();
 		group.add(alwaysShow);
 		group.add(showMousePress);
-		
-		//add listeners for Radio Buttons???
-		//alwaysShow.addActionListener((ActionListener) this);
-		//showMousePress.addActionListener((ActionListener) this);
 		
 		startOver=new JButton("Start Over");
 		lastResult= new JTextField(0);
@@ -83,11 +73,9 @@ public class EightQueens extends JFrame{
 		wins= new JTextField(0);
 		losses= new JTextField(0);
 		
-		//add any listeners needed???
+		//add any listeners
 		startOver.addActionListener(new Listener());
 		
-		//add components to panels:
-		//fill gameBoard panel with squares= board
 		board= new Square[8][8];
 		for (int i = 0; i < 8; i++) {
 			board[i] = new Square[8]; 
@@ -129,7 +117,6 @@ public class EightQueens extends JFrame{
 						System.out.println("File not found");
 						return;
 					}
-					
 					markSquaresForOneQueen(i, j);//i=qRow, j=qCol
 				}
 			}
@@ -137,9 +124,8 @@ public class EightQueens extends JFrame{
 	}
 	
 	private void markSquaresForOneQueen(int qRow, int qCol){
-		//marks "unsafe" squares there (6 loops) by calling Square.markUnsafe()
-		
-		//state of square clicked: state=2 (2 loops)
+		//marks "unsafe" squares
+		//state of square clicked: state=2
 		for(int i=0; i<8; i++){//vertical and horizontal 
 			for(int j=0; j<8; j++){
 				if(i==qRow && j!=qCol){
@@ -181,17 +167,12 @@ public class EightQueens extends JFrame{
 			}
 		}
 		
-		//state of squares diag to NE, SE, SW, and NW state=1 (4 loops)
-
-	}
+	}//end markForOneQueenSquares
+	
 	private class Listener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			boolean giveUp=false;
-			/*
-			 * else if (get.Source is from any button in the board: update board.)
-			 * (< easier said than done...) 
-			 * call markSquares and markSquaresForOneQueen methods?
-			 */
+			
 			if (e.getSource()==startOver){
 				
 				for (int i = 0; i < 8; i++) {
@@ -228,11 +209,9 @@ public class EightQueens extends JFrame{
 					lastResult.setText("Win!");
 				}
 			}
-			//else: only else? not else if? too hard to be detailed
-			//about which square on the board it came from???
-			//later, if doing ec, could add else if's for radio buttons.
+			
 			else{//from square:
-				//which square: e.getSource()
+				//which square
 				for (int i = 0; i < 8; i++) {
 					for (int j = 0; j < 8; j++){
 						if(board[i][j]==e.getSource()){//mark it as Queen
@@ -246,6 +225,7 @@ public class EightQueens extends JFrame{
 			
 		}
 	}//ends listener class
+	
 	private class Square extends JButton {
 		int state;//0 for safe, 1 for unsafe, 2 for queen.
 		public Square() {
@@ -267,7 +247,6 @@ public class EightQueens extends JFrame{
 				for (int j = 0; j < 8; j++){
 					if (board[i][j].getState()==1){
 						board[i][j].setBackground(Color.RED);
-						//state=0;
 					}
 				}
 			}
@@ -281,7 +260,6 @@ public class EightQueens extends JFrame{
 					board[i][j].setIcon(null);
 				}
 			}
-			
 		}
 		
 		@Override
